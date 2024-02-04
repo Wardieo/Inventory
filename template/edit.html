@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/output.css') }}">
+</head>
+<body class="bg-stone-700">
+    <div class="flex flex-col items-center justify-center h-screen">
+        <div class="bg-white max-h-96 overflow-scroll overflow-x-hidden px-28 py-10 rounded-md shadow-lg">
+            <h1 class="text-center pb-2 text-3xl">Inventory Ni Ed Caluag</h1>
+            <form action="/update/{{ item.id }}" method="POST" class="grid grid-cols-2 items-center text-center mt-5 gap-3">
+                <input type="text" class="border-b-2 w-52" required name="item" placeholder="Item" id="title" value="{{ item.item }}">
+                <input type="number" class="border-b-2 w-52" required name="total" placeholder="Total" id="total" value="{{ item.total }}">
+                <input type="text" class="border-b-2 w-52" required name="price" placeholder="Price" id="price" value="{{ item.price }}">
+                <input type="submit" placeholder="Add title" value="Update" class="bg-orange-300 text-white px-2 rounded-md mt-3 w-16">
+            </form>
+            <a href="/">Go back</a>
+        </div>
+    </div>
+</body>
+</html>

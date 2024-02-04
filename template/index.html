@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/output.css') }}">
+</head>
+<body class="bg-stone-700">
+    <div class="flex flex-col items-center justify-center h-screen">
+        <div class="bg-white max-h-96 overflow-scroll overflow-x-hidden px-28 py-10 rounded-md shadow-lg">
+            <h1 class="text-center pb-2 text-3xl">Inventory Ni Ed Caluag</h1>
+            <table class="text-center flex justify-center items-center">
+                <tr class="">
+                    <th class="pr-6 text-start">Item</th>
+                    <th class="pr-6 text-start">Total</th>
+                    <th class="pr-6 text-start">Price</th>
+                    <th class="text-start">Date Added</th>
+                    
+                </tr>
+                {% for item in items %}
+                    <tr class="mt-5 ">
+                        <td class="pr-6">{{item.item}}</td>
+                        <td class="pr-6">{{item.total}}</td>
+                        <td class="pr-6 ">{{item.price}}</td>
+                        <td class=" ">{{item.date_created.date()}}</td>
+                        <td class="flex gap-2 ml-3 w-16">
+                            <a href="/update/{{ item.id }}"><img src="../static/css/image/Edit.png" alt="edit"></a>
+                            <br>
+                            <a href="/delete/{{ item.id }}"><img src="../static/css/image/Remove.png" alt="dleete"></a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+            <form action="/" method="POST" class="grid grid-cols-2 items-center text-center mt-5 gap-3">
+                <input type="text" class="border-b-2 w-52" required name="item" placeholder="Item" id="title">
+                <input type="number" class="border-b-2 w-52" required name="total" placeholder="Total" id="total">
+                <input type="text" class="border-b-2 w-52" required name="price" placeholder="Price" id="price">
+                <input type="submit" placeholder="Add title" value="Submit" class="bg-orange-300 text-white px-2 rounded-md mt-3 w-16">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
