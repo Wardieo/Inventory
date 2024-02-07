@@ -15,15 +15,12 @@
                     <th class="pr-6 text-start">Item</th>
                     <th class="pr-6 text-start">Total</th>
                     <th class="pr-6 text-start">Price</th>
-                    <th class="text-start">Date Added</th>
-                    
                 </tr>
                 {% for item in items %}
                     <tr class="mt-5 ">
                         <td class="pr-6">{{item.item}}</td>
                         <td class="pr-6">{{item.total}}</td>
                         <td class="pr-6 ">{{item.price}}</td>
-                        <td class=" ">{{item.date_created.date()}}</td>
                         <td class="flex gap-2 ml-3 w-16">
                             <a href="/update/{{ item.id }}"><img src="../static/css/image/Edit.png" alt="edit"></a>
                             <br>

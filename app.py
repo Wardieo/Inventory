@@ -14,7 +14,6 @@ class Inventory(db.Model):
     item = db.Column(db.String(200), nullable=False)
     total = db.Column(db.Integer(), default=0)
     price = db.Column(db.Integer(), default=0)
-    date_created = db.Column(db.DateTime,default=datetime.utcnow)
 
     def __repr__(self):
         return '<Inventory %r>' % self.id
@@ -35,7 +34,7 @@ def index():
             return 'There was a issue bogok'
         
     else:
-        item = Inventory.query.order_by(Inventory.date_created).all()
+        item = Inventory.query.order_by(Inventory.price).all()
         return render_template('index.html', items=item)
 
 @app.route('/delete/<int:id>')
